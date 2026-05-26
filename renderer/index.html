@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>FFmpeg GUI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!--  标题栏 — Windows 11 风格，三按钮右上角                       -->
+  <!-- ============================================================ -->
+  <header class="titlebar" id="titleBar">
+    <div class="titlebar-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="23 7 16 12 23 17 23 7"/>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+      </svg>
+    </div>
+    <span class="titlebar-title">FFmpeg GUI</span>
+    <div class="titlebar-spacer"></div>
+    <div class="titlebar-captions">
+      <button class="caption-btn" id="btnMinimize" aria-label="最小化">
+        <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="4" width="8" height="1" fill="currentColor"/></svg>
+      </button>
+      <button class="caption-btn" id="btnMaximize" aria-label="最大化">
+        <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" rx="0.5" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      </button>
+      <button class="caption-btn caption-close" id="btnClose" aria-label="关闭">
+        <svg width="10" height="10" viewBox="0 0 10 10"><line x1="1.5" y1="1.5" x2="8.5" y2="8.5" stroke="currentColor" stroke-width="1.1"/><line x1="8.5" y1="1.5" x2="1.5" y2="8.5" stroke="currentColor" stroke-width="1.1"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!--  主体                                                         -->
+  <!-- ============================================================ -->
+  <div class="app-body">
+    <!-- 侧边栏 -->
+    <aside id="sidebar">
+      <div class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="23 7 16 12 23 17 23 7"/>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+        <span>FFmpeg GUI</span>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav"></nav>
+
+      <div class="sidebar-footer">
+        <button class="theme-toggle" id="themeToggle" title="切换主题">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- 主内容区 —— 页面在此缓存切换 -->
+    <main id="mainContent">
+      <div class="welcome-page" id="welcomePage">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3">
+          <polygon points="23 7 16 12 23 17 23 7"/>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+        <h1>FFmpeg GUI</h1>
+        <p>跨平台视频 / 音频处理工具。从左侧菜单选择功能开始。</p>
+        <p class="welcome-hint">所有处理在本地完成，无需上传文件。</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  状态栏                                                       -->
+  <!-- ============================================================ -->
+  <footer class="statusbar">
+    <span id="statusText">就绪</span>
+    <span id="statusVersion"></span>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
