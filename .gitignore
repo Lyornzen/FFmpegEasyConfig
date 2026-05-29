@@ -1,31 +1,7 @@
-# Dependencies
 node_modules/
-
-# Build outputs
 dist/
 dist-electron/
 release/
-
-# IDE
-.idea/
-*.swp
-*.swo
-*~
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
-Desktop.ini
-
-# Env
-.env
-.env.local
-.env.*.local
-
-# Logs
+.cache/
 *.log
 log.txt
-
-# Config
-*.local

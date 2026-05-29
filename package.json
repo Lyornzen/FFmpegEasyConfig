@@ -7,15 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "package": "tsc && vite build && electron-builder",
+    "package": "tsc && vite build && electron-builder --win",
     "preview": "vite preview",
-    "lint": "tsc --noEmit",
-    "electron:dev": "vite",
-    "electron:build": "vite build && electron-builder"
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.3.0",
     "antd": "^5.13.0",
+    "@ant-design/icons": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0"
@@ -37,19 +35,47 @@
     "directories": {
       "output": "release"
     },
+    "asar": true,
+    "compression": "maximum",
     "files": [
       "dist/**/*",
       "dist-electron/**/*"
     ],
-    "mac": {
-      "target": "dmg"
-    },
+    "extraResources": [],
     "win": {
-      "target": "nsis",
-      "sign": null
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "sign": null,
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": null,
+      "uninstallerIcon": null,
+      "installerHeaderIcon": null,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "FFmpeg UI"
+    },
+    "portable": {
+      "artifactName": "FFmpeg-UI-Portable-${version}.exe"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities"
     },
     "linux": {
-      "target": "AppImage"
+      "target": "AppImage",
+      "category": "Utility"
     }
   }
 }
