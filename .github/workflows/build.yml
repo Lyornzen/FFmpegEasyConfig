@@ -53,7 +53,7 @@ jobs:
 
       - name: Package (Windows)
         if: runner.os == 'Windows'
-        run: npm run package
+        run: npx electron-builder --win --win.skipSign
         env:
           # GitHub Actions cannot sign — skip signing
           CSC_LINK: ''
