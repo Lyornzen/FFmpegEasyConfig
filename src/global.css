@@ -1,0 +1,186 @@
+/* ================================================================
+   FFmpeg UI — Global Styles
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+  background: #f5f7fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Selection */
+::selection {
+  background: #e6f4ff;
+  color: #1677ff;
+}
+
+/* Ant Design overrides */
+.ant-layout {
+  background: #f5f7fa !important;
+}
+
+.ant-layout-sider {
+  background: #ffffff !important;
+}
+
+.ant-menu-inline {
+  border-inline-end: none !important;
+}
+
+.ant-card {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.06), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ant-card-bordered {
+  border: none !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Header bar drag region */
+.header-drag-region {
+  -webkit-app-region: drag;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.header-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Transitions */
+.smooth-transition {
+  transition: all 0.2s ease;
+}
+
+/* Code preview block */
+.code-block {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-block .copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.6;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+
+.code-block .copy-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Drop zone override */
+.ant-upload-drag {
+  border-radius: 16px !important;
+  border: 2px dashed #d1d5db !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.ant-upload-drag:hover {
+  border-color: #1677ff !important;
+}
+
+/* Compact form spacing */
+.compact-form .ant-form-item {
+  margin-bottom: 14px;
+}
+
+/* Slider marks font size */
+.ant-slider-mark-text {
+  font-size: 11px !important;
+}
+
+.ant-upload-drag .ant-upload-drag-container {
+  padding: 32px !important;
+}
+
+/* Window control buttons */
+.window-control-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.window-control-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.window-control-btn.close:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
