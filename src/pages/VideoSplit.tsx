@@ -7,6 +7,7 @@ import CommandPreview from '../shared/CommandPreview';
 import PreviewPanel from '../shared/PreviewPanel';
 import { useFFmpeg } from '../hooks/useFFmpeg';
 import { useTaskContext } from '../contexts/TaskContext';
+import { joinPath } from '../shared/pathUtils';
 
 const { Option } = Select;
 
@@ -89,7 +90,7 @@ export default function VideoSplit() {
   const approxCount = splitMode === 'time' ? Math.ceil(totalDuration / Math.max(1, timeToSec(segmentTime))) : numSegments;
 
   const command = files.length > 0 && outputDir
-    ? `ffmpeg -y -i "${files[0].path}" -c:v ${videoCodec} -c:a copy -f segment -segment_time ${segTime} -reset_timestamps 1 "${outputDir.replace(/\\/g,'/')}/${files[0].name.replace(/\.[^.]+$/, '')}_%03d.${outputFormat}"`
+    ? `ffmpeg -y -i "${files[0].path}" -c:v ${videoCodec} -c:a copy -f segment -segment_time ${segTime} -reset_timestamps 1 "${joinPath(outputDir, `${files[0].name.replace(/\.[^.]+$/, '')}_%03d.${outputFormat}`)}"`
     : '';
 
   return (

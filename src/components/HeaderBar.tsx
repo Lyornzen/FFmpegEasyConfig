@@ -3,11 +3,10 @@ import {
   QuestionCircleOutlined,
   MinusOutlined,
   BorderOutlined,
-  BlockOutlined,
   CloseOutlined,
   SwapOutlined,
 } from '@ant-design/icons';
-import { Button, Tooltip, Space, Divider } from 'antd';
+import { Button, Tooltip, Divider } from 'antd';
 
 interface HeaderBarProps {
   title: string;

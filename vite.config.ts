@@ -13,6 +13,7 @@ export default defineConfig({
         vite: {
           build: {
             outDir: 'dist-electron',
+            minify: 'esbuild',
             rollupOptions: {
               external: ['electron'],
             },
@@ -27,6 +28,7 @@ export default defineConfig({
         vite: {
           build: {
             outDir: 'dist-electron',
+            minify: 'esbuild',
             rollupOptions: {
               external: ['electron'],
             },
@@ -39,6 +41,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  build: {
+    target: 'es2020',
+    minify: 'esbuild',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          antd: ['antd', '@ant-design/icons'],
+        },
+      },
     },
   },
 });
