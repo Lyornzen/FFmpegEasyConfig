@@ -39,10 +39,8 @@
     "compression": "maximum",
     "files": [
       "dist/**/*",
-      "dist-electron/**/*",
-      "public/icon.png"
+      "dist-electron/**/*"
     ],
-    "icon": "public/icon.png",
     "extraResources": [],
     "win": {
       "target": [
@@ -61,9 +59,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "public/icon.png",
-      "uninstallerIcon": "public/icon.png",
-      "installerHeaderIcon": "public/icon.png",
+
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "FFmpegEasyConfig"
