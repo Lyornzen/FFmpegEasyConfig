@@ -36,8 +36,9 @@ export default function Logs() {
     >
       <div
         style={{
-          background: '#1e1e1e',
-          color: '#d4d4d4',
+          background: '#f8f9fa',
+          color: '#374151',
+          border: '1px solid #e5e7eb',
           fontFamily: "'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace",
           fontSize: 12,
           lineHeight: 1.7,

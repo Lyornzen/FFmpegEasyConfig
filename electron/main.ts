@@ -23,6 +23,8 @@ if (!gotLock) {
 let mainWindow: BrowserWindow | null = null;
 let ffmpegAvailable = false;
 let ffprobeAvailable = false;
+let ffmpegVersion = '';
+let ffprobeVersion = '';
 
 const isDev = !app.isPackaged;
 
@@ -127,6 +129,8 @@ function checkTool(name: string, binaryPath: string): Promise<boolean> {
       if (ok) {
         const firstLine = stdout.split('\n')[0] || '';
         logger.info(`${name} 检测成功: ${firstLine}`);
+        if (name === 'ffmpeg') ffmpegVersion = firstLine;
+        if (name === 'ffprobe') ffprobeVersion = firstLine;
       } else {
         logger.warn(`${name} 测试失败 (exit ${code}, stderr: ${stderr.slice(0, 200)})`);
       }
@@ -189,6 +193,8 @@ async function checkFFmpegTools() {
     ffprobe: ffprobeAvailable,
     ffmpegPath: ffmpegConfig.getFfmpeg(),
     ffprobePath: ffmpegConfig.getFfprobe(),
+    ffmpegVersion,
+    ffprobeVersion,
   });
 }
 
@@ -222,7 +228,7 @@ function createWindow() {
 
 // ── App lifecycle ──
 app.whenReady().then(async () => {
-  logger.info(`FFmpeg UI 启动 (${isDev ? '开发模式' : '生产模式'})`);
+  logger.info(`FFmpegEasyConfig 启动 (${isDev ? '开发模式' : '生产模式'})`);
   logger.info(`日志文件: ${logger.getPath()}`);
 
   registerProtocol();
@@ -303,6 +309,8 @@ function registerAppHandlers() {
     ffprobe: ffprobeAvailable,
     ffmpegPath: ffmpegConfig.getFfmpeg(),
     ffprobePath: ffmpegConfig.getFfprobe(),
+    ffmpegVersion,
+    ffprobeVersion,
   }));
 
   ipcMain.handle('app:recheckFfmpeg', async () => {

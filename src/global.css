@@ -1,5 +1,5 @@
 /* ================================================================
-   FFmpeg UI — Global Styles
+   FFmpegEasyConfig — Global Styles
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -104,8 +104,9 @@ body {
 
 /* Code preview block */
 .code-block {
-  background: #1e1e1e;
-  color: #d4d4d4;
+  background: #f8f9fa;
+  color: #374151;
+  border: 1px solid #e5e7eb;
   font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
   font-size: 13px;
   line-height: 1.6;
@@ -119,20 +120,19 @@ body {
   position: absolute;
   top: 8px;
   right: 8px;
-  opacity: 0.6;
   cursor: pointer;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  color: #6b7280;
+  background: #e5e7eb;
   border: none;
   padding: 4px 10px;
   border-radius: 4px;
   font-size: 12px;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
 }
 
 .code-block .copy-btn:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
+  color: #374151;
+  background: #d1d5db;
 }
 
 /* Drop zone override */

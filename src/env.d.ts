@@ -27,6 +27,8 @@ interface FFmpegStatus {
   ffprobe: boolean;
   ffmpegPath?: string;
   ffprobePath?: string;
+  ffmpegVersion?: string;
+  ffprobeVersion?: string;
 }
 
 interface ElectronAPI {

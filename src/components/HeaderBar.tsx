@@ -1,19 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import {
   SettingOutlined,
   QuestionCircleOutlined,
   MinusOutlined,
   BorderOutlined,
   CloseOutlined,
-  SwapOutlined,
 } from '@ant-design/icons';
 import { Button, Tooltip, Divider } from 'antd';
 
-interface HeaderBarProps {
-  title: string;
-  description: string;
-}
+export default function HeaderBar() {
+  const navigate = useNavigate();
 
-export default function HeaderBar({ title, description }: HeaderBarProps) {
   const handleMinimize = () => window.electronAPI?.window?.minimize();
   const handleMaximize = () => window.electronAPI?.window?.maximize();
   const handleClose = () => window.electronAPI?.window?.close();
@@ -35,23 +32,12 @@ export default function HeaderBar({ title, description }: HeaderBarProps) {
       }}
     >
       {/* Left: Logo — draggable region */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div
-          style={{
-            width: 28,
-            height: 28,
-            background: '#1677ff',
-            borderRadius: 8,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#fff',
-            fontSize: 14,
-            fontWeight: 700,
-          }}
-        >
-          F
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <img
+          src="./icon.png"
+          alt="FFmpegEasyConfig"
+          style={{ width: 28, height: 28, borderRadius: 6 }}
+        />
         <span
           style={{
             fontSize: 20,
@@ -60,20 +46,8 @@ export default function HeaderBar({ title, description }: HeaderBarProps) {
             letterSpacing: '-0.3px',
           }}
         >
-          FFmpeg UI
+          FFmpegEasyConfig
         </span>
-      </div>
-
-      {/* Center: Page title — draggable region */}
-      <div
-        style={{ textAlign: 'center', flex: 1, maxWidth: 480 }}
-      >
-        <div style={{ fontSize: 18, fontWeight: 600, color: '#111827' }}>
-          {title}
-        </div>
-        <div style={{ fontSize: 13, color: '#6b7280', marginTop: 2 }}>
-          {description}
-        </div>
       </div>
 
       {/* Right: Tools */}
@@ -82,13 +56,18 @@ export default function HeaderBar({ title, description }: HeaderBarProps) {
         style={{ display: 'flex', alignItems: 'center', gap: 4 }}
       >
         <Tooltip title="设置">
-          <Button type="text" icon={<SettingOutlined style={{ fontSize: 18 }} />} />
+          <Button
+            type="text"
+            icon={<SettingOutlined style={{ fontSize: 18 }} />}
+            onClick={() => navigate('/system/settings')}
+          />
         </Tooltip>
         <Tooltip title="帮助">
-          <Button type="text" icon={<QuestionCircleOutlined style={{ fontSize: 18 }} />} />
-        </Tooltip>
-        <Tooltip title="切换主题">
-          <Button type="text" icon={<SwapOutlined style={{ fontSize: 18 }} />} />
+          <Button
+            type="text"
+            icon={<QuestionCircleOutlined style={{ fontSize: 18 }} />}
+            onClick={() => window.electronAPI?.app?.openExternal('https://ffmpeg.org/documentation.html')}
+          />
         </Tooltip>
 
         <Divider type="vertical" style={{ height: 20, margin: '0 8px' }} />
