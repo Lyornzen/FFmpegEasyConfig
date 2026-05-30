@@ -3,12 +3,7 @@ import { Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import {
   HomeOutlined,
-  VideoCameraOutlined,
-  AudioOutlined,
   FileTextOutlined,
-  PictureOutlined,
-  WifiOutlined,
-  ToolOutlined,
   SettingOutlined,
   FileSearchOutlined,
   InfoCircleOutlined,
@@ -20,12 +15,10 @@ import {
   CameraOutlined,
   RotateRightOutlined,
   CopyrightOutlined,
-  SoundOutlined,
   ImportOutlined,
   DashboardOutlined,
   ControlOutlined,
   BgColorsOutlined,
-  PushpinOutlined,
   FileAddOutlined,
   FileGifOutlined,
   ThunderboltOutlined,
@@ -34,7 +27,6 @@ import {
   LaptopOutlined,
   CodeOutlined,
   AppstoreOutlined,
-  PartitionOutlined,
   FormOutlined,
 } from '@ant-design/icons';
 

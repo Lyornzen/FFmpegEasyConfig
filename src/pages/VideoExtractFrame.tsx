@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { Card, Button, Space, Select, Input, InputNumber, Slider, message, Alert, Radio, Tag, Empty, List } from 'antd';
-import { CameraOutlined, CaretRightOutlined, ExclamationCircleOutlined, DeleteOutlined, PlayCircleOutlined } from '@ant-design/icons';
+import { CameraOutlined, CaretRightOutlined, ExclamationCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import FileDropZone from '../shared/FileDropZone';
 import FileInfoTable, { MediaFile } from '../shared/FileInfoTable';
 import CommandPreview from '../shared/CommandPreview';

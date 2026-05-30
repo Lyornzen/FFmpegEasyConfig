@@ -7,6 +7,7 @@ import CommandPreview from '../shared/CommandPreview';
 import PreviewPanel from '../shared/PreviewPanel';
 import { useFFmpeg } from '../hooks/useFFmpeg';
 import { useTaskContext } from '../contexts/TaskContext';
+import { joinPath } from '../shared/pathUtils';
 
 const { Option } = Select;
 
@@ -61,7 +62,7 @@ export default function VideoCompress() {
   }, [files, outputDir, outputFormat, videoCodec, crf, preset, resolution, bitrate, run, ffmpegOk, addTask]);
 
   const command = files.length > 0 && outputDir
-    ? `ffmpeg -y -i "${files[0].path}" -c:v ${videoCodec} -crf ${crf} -preset ${preset} -c:a aac${resolution ? ` -vf "scale=${resolution}"` : ''}${bitrate ? ` -b:v ${bitrate}` : ''} "${outputDir}/${files[0].name.replace(/\.[^.]+$/, '')}_compressed.${outputFormat}"`
+    ? `ffmpeg -y -i "${files[0].path}" -c:v ${videoCodec} -crf ${crf} -preset ${preset} -c:a aac${resolution ? ` -vf "scale=${resolution}"` : ''}${bitrate ? ` -b:v ${bitrate}` : ''} "${joinPath(outputDir, `${files[0].name.replace(/\.[^.]+$/, '')}_compressed.${outputFormat}`)}"`
     : '';
 
   return (

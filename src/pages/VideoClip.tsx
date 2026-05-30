@@ -1,12 +1,13 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { Card, Button, Space, Input, InputNumber, Select, Slider, message, Alert } from 'antd';
-import { ScissorOutlined, CaretRightOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Card, Button, Space, Input, Select, Slider, message, Alert } from 'antd';
+import { CaretRightOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import FileDropZone from '../shared/FileDropZone';
 import FileInfoTable, { MediaFile } from '../shared/FileInfoTable';
 import CommandPreview from '../shared/CommandPreview';
 import PreviewPanel from '../shared/PreviewPanel';
 import { useFFmpeg } from '../hooks/useFFmpeg';
 import { useTaskContext } from '../contexts/TaskContext';
+import { joinPath } from '../shared/pathUtils';
 
 const { Option } = Select;
 
@@ -80,7 +81,7 @@ export default function VideoClip() {
 
   const clipDuration = endSec - startSec;
   const command = files.length > 0 && outputDir
-    ? `ffmpeg -y -ss ${startTime} -t ${secToTime(Math.max(0, clipDuration))} -i "${files[0].path}" -c:v ${videoCodec} -c:a copy "${outputDir}/${files[0].name.replace(/\.[^.]+$/, '')}_clip.${outputFormat}"`
+    ? `ffmpeg -y -ss ${startTime} -t ${secToTime(Math.max(0, clipDuration))} -i "${files[0].path}" -c:v ${videoCodec} -c:a copy "${joinPath(outputDir, `${files[0].name.replace(/\.[^.]+$/, '')}_clip.${outputFormat}`)}"`
     : '';
 
   return (
