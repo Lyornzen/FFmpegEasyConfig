@@ -214,7 +214,6 @@ function createWindow() {
       contextIsolation: true,
       sandbox: false,
     },
-    icon: path.join(__dirname, '../public/icon.png'),
   });
 
   if (isDev) {
